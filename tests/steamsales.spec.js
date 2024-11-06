@@ -1,4 +1,4 @@
-// Imports for Playwright
+// Imports for Playwright and file writing
 import { test, expect } from '@playwright/test';
 import { writeFileSync } from 'fs';
 
@@ -19,7 +19,7 @@ test('scrape deals.gg', async ({ page }) => {
     output += `The game "${gameNames[i]}" was ${gameOldPrices[i]}, but is now ${gameNewPrices[i]}. Buy here: ${gameLinks[i]}\n`;
   }
 
-  // Write the data to the file.
+  // Write the data to the file (Overwrites existing file).
   writeFileSync('game_deals.txt', output);
 
   // Playwright handles browser and file closure automatically, so we're done!
