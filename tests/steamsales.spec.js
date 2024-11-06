@@ -1,31 +1,29 @@
+// Imports for Playwright
 import { test, expect } from '@playwright/test';
+import { writeFileSync } from 'fs';
 
-test('has title', async ({ page }) => {
-  await page.goto('https://store.steampowered.com');
+// The runable test that actually just scrapes data
+test('scrape deals.gg', async ({ page }) => {
+  await page.goto('https://gg.deals/deals/steam-deals/');
 
-  await page.locator("//div[@class='home_page_content special_offers']//a[contains(., 'Browse More')]").click();
+  // Instantiate variables that hold the data points we want. (Using generic XPaths incase of DOM change)
+  const gameNames = await page.locator("//div[@data-game-name]//a[contains(@class, 'game-info-title')]").allTextContents(); // This '.allTextContents' method makes these consts into arrays!
+  const gameOldPrices = await page.locator("//div[@data-game-name]//span[contains(@class, 'price-old')]").allTextContents();
+  const gameNewPrices = await page.locator("//div[@data-game-name]//span[contains(@class, 'game-price-new')]").allTextContents();
+  const gameLinks = await page.locator("a.shop-link").evaluateAll(links => links.map(link => link.href));
 
-  let stuff = await page.locator("(//div[contains(@class, 'SaleSectionForCustomCSS')])[3]//div[@class='ImpressionTrackedElement']").textContent();
-  console.log(test);
-  
-  for (let i = 0; i < 12; i++) {
-
-    // Click the Next button
-    await page.locator("//div[contains(@class, 'contenthubmaincarousel')]//button[contains(@class, 'CarouselBtnRight')]").click();
-
-    // Retrieve and log the game name
-    const name = await page.locator("(//div[contains(@class, 'TagBox')]/../..//div[contains(., 'Release date:')]/a)[2]").textContent();
-    console.log(name);
-
-    // Retrieve and log the price
-    const price = await page.locator("(//div[@class='ContentHubMainCarouselCapsule']//div[contains(@class, 'CapsuleBottomBar')])[2]").textContent();
-    console.log(price);
-    
+  // Make an output variable that holds the data that will be written to the .txt file
+  let output = '';
+  for (let i = 0; i < gameNames.length; i++) {
+    // Print every data point, formatted nicely. (Link is using Markdown)
+    output += `The game "${gameNames[i]}" was ${gameOldPrices[i]}, but is now ${gameNewPrices[i]}. Buy here: ${gameLinks[i]}\n`;
   }
 
+  // Write the data to the file.
+  writeFileSync('game_deals.txt', output);
 
-
-//   // Expect a title "to contain" a substring.
-//   //await expect(page).toHaveTitle(/Steam/);
-//   await expect(page.locator("//div[contains(@class, 'sale_item_browser')]//div[@class='ImpressionTrackedElement']")).toBeVisible();
+  // Playwright handles browser and file closure automatically, so we're done!
 });
+
+
+
