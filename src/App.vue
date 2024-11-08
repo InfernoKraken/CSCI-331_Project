@@ -1,5 +1,6 @@
 <script setup>
 import CaptureControls from './components/CaptureControls.vue'
+import FetchSteam from './components/FetchSteam.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Test from './components/Test.vue'
@@ -7,7 +8,10 @@ import LoadFromUrl from './components/LoadFromUrl.vue'
 </script>
 
 <template>
-  <CaptureControls />
+  <div class="controls">
+    <CaptureControls />
+    <FetchSteam />
+  </div>
   <article>
     <header>
       <img
@@ -21,7 +25,9 @@ import LoadFromUrl from './components/LoadFromUrl.vue'
       <div class="wrapper">
         <HelloWorld msg="You did it!" />
       </div>
-      <LoadFromUrl />
+      <div class="iframepage">
+        <LoadFromUrl />
+      </div>
     </header>
 
     <main>
