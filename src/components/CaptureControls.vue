@@ -1,9 +1,7 @@
 <template>
-  <div class="controls">
     <input class="contorls__url" type="text" placeholder="Load a URL">
     <button class="controls__url-button">GO</button>
     <button class="contorls__capture">Select Catpure Area</button>
-  </div>
 </template>
 
 <style>
@@ -16,6 +14,9 @@
   }
   .controls__url-button {
     margin-left: 0; 
+    margin-right: 1rem;
+  }
+  .controls__capture {
     margin-right: 1rem;
   }
 </style>
