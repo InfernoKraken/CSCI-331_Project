@@ -28,6 +28,10 @@ import LoadFromUrl from './components/LoadFromUrl.vue'
       <div class="iframepage">
         <LoadFromUrl />
       </div>
+
+      <div class="steamscraper">
+        <FetchSteam />
+      </div>
     </header>
 
     <main>
