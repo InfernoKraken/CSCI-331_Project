@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     async fetchSteamSales() {
-      alert("Fetching current Steam sales by using Playwright. Please wait ~30 seconds.");
+      alert("Fetching current Steam sales by using Playwright. Please close this alert and then wait ~30 seconds.");
       try {
         const response = await fetch('http://localhost:3000/fetch-steam-sales');
         if (!response.ok) {
