@@ -16,6 +16,7 @@ export default {
   },
   methods: {
     async fetchSteamSales() {
+      alert("Fetching current Steam sales by using Playwright. Please wait ~30 seconds.");
       try {
         const response = await fetch('http://localhost:3000/fetch-steam-sales');
         if (!response.ok) {
@@ -38,5 +39,18 @@ export default {
 </script>
 
 <style scoped>
-/* Add any custom styles for Markdown elements here */
+.markdown-content {
+  max-width: 600px; /* Limit the width of the content for readability */
+  margin: 0 auto; /* Center the content container */
+  word-wrap: break-word; /* Wrap long words or URLs */
+  overflow-wrap: break-word; /* Wrap long words or URLs */
+  white-space: pre-wrap; /* Preserve line breaks and wrap content */
+  line-height: 1.6; /* Improve readability */
+  text-align: left; /* Left-align text content */
+}
+
+.markdown-content a {
+  color: #1e90ff; /* Customize link color */
+  text-decoration: underline; /* Style links with an underline */
+}
 </style>
