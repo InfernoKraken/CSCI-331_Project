@@ -1,9 +1,12 @@
 <template>
   <div>
     <button @click="fetchSteamSales">Fetch Steam Sales</button>
-    <div v-html="markdownContent"></div>
+    <!-- Container for Steam sales content -->
+    <div id="steam-sales-content" v-html="markdownContent"></div>
   </div>
 </template>
+
+
 
 <script>
 import { marked } from 'marked';
@@ -38,19 +41,26 @@ export default {
 };
 </script>
 
-<style scoped>
-.markdown-content {
-  max-width: 600px; /* Limit the width of the content for readability */
-  margin: 0 auto; /* Center the content container */
-  word-wrap: break-word; /* Wrap long words or URLs */
-  overflow-wrap: break-word; /* Wrap long words or URLs */
-  white-space: pre-wrap; /* Preserve line breaks and wrap content */
-  line-height: 1.6; /* Improve readability */
-  text-align: left; /* Left-align text content */
+<style>
+/* Ensure #app or main container is positioned relatively */
+#app {
+  position: relative;
 }
 
-.markdown-content a {
-  color: #1e90ff; /* Customize link color */
-  text-decoration: underline; /* Style links with an underline */
+#steam-sales-content {
+  position: absolute;
+  top: 120px; /* Adjust as needed for placement */
+  left: -100px; /* Adjust as needed */
+  width: 705px; /* Set the desired width */
+  max-height: 90vh; /* Limit height to avoid overflowing the screen */
+  overflow-y: auto; /* Add scrolling if the content exceeds the container height */
+  z-index: 999; /* High z-index to ensure it overlays other content */
+  background-color: rgba(0, 0, 0);
+  color: #fff; /* Text color for readability */
+  
+  border-radius: 5px; /* Optional rounded corners */
+  text-align: left; /* Align text to the left */
 }
+
+
 </style>
