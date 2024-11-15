@@ -16,7 +16,7 @@ test('scrape deals.gg', async ({ page }) => {
   let output = '';
   for (let i = 0; i < gameNames.length; i++) {
     // Print every data point, formatted nicely. (Link is using Markdown)
-    output += `The game "${gameNames[i]}" was ${gameOldPrices[i]}, but is now ${gameNewPrices[i]}. Buy here: ${gameLinks[i]}\n`;
+    output += `The game "${gameNames[i]}" was ${gameOldPrices[i]}, but is now ${gameNewPrices[i]}! (Buy [here](${gameLinks[i]}))\n\n`;
   }
 
   // Write the data to the file (Overwrites existing file).
