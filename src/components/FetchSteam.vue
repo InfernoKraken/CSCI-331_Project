@@ -57,7 +57,6 @@ export default {
   z-index: 999; /* High z-index to ensure it overlays other content */
   background-color: rgba(0, 0, 0);
   color: #fff; /* Text color for readability */
-  
   border-radius: 5px; /* Optional rounded corners */
   text-align: left; /* Align text to the left */
 }
