@@ -76,28 +76,6 @@ export default {
 };
 </script>
 
-
-<!--This did take a screenshot of this area, but let's make it more dynamic!-->
-<!--
-<template>
-  <div>
-    <div ref="screenShotArea" style="padding: 23px; border: 1px solid #ccc;">
-      <h2>Screenshot Content</h2>
-      <p>This is the content that will be captured in the screenshot.</p>
-    </div>
-
-    <button @click="takeScreenshot">
-      Take Screenshot
-    </button>
-
-    <div v-if="screenshot" style="margin-top: 20px;">
-      <h3>Screenshot Preview</h3>
-      <img :src="screenshot" alt="Screenshot Preview" style="border: 1px solid #000;" />
-    </div>
-  </div>
-</template>
--->
-
 <!--User defined bounds:-->
 <template>
   <div>

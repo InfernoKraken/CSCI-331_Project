@@ -1,7 +1,12 @@
+<script setup>
+  import { defineEmits } from 'vue';
+  const emit = defineEmits(['toggle-visibility']);
+</script>
+
 <template>
     <input class="contorls__url" type="text" placeholder="Load a URL">
-    <button class="controls__url-button">GO</button>
-    <button class="contorls__capture">Select Catpure Area</button>
+    <button @click="emit('toggle-visibility')" class="controls__url-button">GO</button>
+    <button class="controls__capture" onClick="captureScreenshot()">Select Catpure Area</button>
 </template>
 
 <style>

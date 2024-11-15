@@ -15,6 +15,20 @@ a,
   padding: 3px;
 }
 
+button {
+  background-color: green;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 10px 2rem;
+}
+button:hover {
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
