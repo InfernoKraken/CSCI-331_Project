@@ -42,7 +42,7 @@ const updateVideoUrl = (newUrl) => {
         <HelloWorld msg="You did it!" />
       </div>
       <div class="iframepage">
-        <LoadFromUrl />
+        <LoadFromUrl v-if="!showVueHeader" :src="videoUrl" />
       </div>
     </header>
 
