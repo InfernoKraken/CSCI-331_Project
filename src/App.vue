@@ -3,29 +3,37 @@ import { ref } from 'vue';
 import FetchSteam from './components/FetchSteam.vue';
 import HelloWorld from './components/HelloWorld.vue';
 import TheWelcome from './components/TheWelcome.vue';
-import Test from './components/Test.vue';
+import ScreenShot from './components/ScreenShot.vue';
 import LoadFromUrl from './components/LoadFromUrl.vue';
 import ButtonCapture from './components/ButtonCapture.vue';
-import FormLoadVideo from './components/FormLoadVideo.vue';
+import FormLoadVideo from './components/FormResourceURL.vue';
 
 // Toggle header visibility
 const showVueHeader = ref(true);
-const toggleVueHeader = () => {
-  showVueHeader.value = !showVueHeader.value;
+// URL for the iframe
+const resourceUrl = ref('');
+
+// Event Handlers
+// Resrouce URL update
+const udpateResourceURL = (newURL) => {
+  resourceUrl.value = newURL;
 };
 
-// Reactive state for video URL
-const videoUrl = ref('');
-
-const updateVideoUrl = (newUrl) => {
-  videoUrl.value = newUrl;
+// Go Button Click
+const handleGoButtonClick = () => {
+  if(showVueHeader.value) { 
+    showVueHeader.value = false;
+  }
 };
 </script>
 
 <template>
   <div class="controls">
-    <!-- Pass updateVideoUrl as a prop to FormLoadVideo -->
-    <FormLoadVideo @update-url="updateVideoUrl" />
+    <!-- Pass updateResourceUrl as a prop to FormLoadResource -->
+    <FormLoadVideo 
+      @update-url="udpateResourceURL"
+      @go-button-click="handleGoButtonClick"
+    />
     <ButtonCapture @toggle-visibility="toggleVueHeader" />
     <FetchSteam />
   </div>
@@ -42,13 +50,13 @@ const updateVideoUrl = (newUrl) => {
         <HelloWorld msg="You did it!" />
       </div>
       <div class="iframepage">
-        <LoadFromUrl v-if="!showVueHeader" :src="videoUrl" />
+        <LoadFromUrl v-if="!showVueHeader" :src="resourceUrl" />
       </div>
     </header>
 
     <main>
       <TheWelcome />
-      <Test />
+      <ScreenShot />
     </main>
   </article>
 </template>
