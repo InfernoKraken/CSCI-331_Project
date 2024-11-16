@@ -1,12 +1,20 @@
 <script setup>
-  import { defineEmits } from 'vue';
+  import html2canvas from 'html2canvas';
+  
+  const captureFullPage = () => {
+    html2canvas(document.body).then((canvas) => {
+      const link=document.createElement('a');
+      link.download = 'screenshot.png';
+      link.href=canvas.toDataURL();
+      link.click();
+    });
+  };
 
-  const emit = defineEmits(['toggle-visibility']);
 </script>
 
 <template>
-  <button @click="emit('toggle-visibility')">
-    Select Capture Aread
+  <button @click="captureFullPage">
+    Capture Full Page
   </button>
 </template>
 
