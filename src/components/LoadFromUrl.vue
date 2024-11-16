@@ -2,31 +2,27 @@
 import { defineProps } from 'vue';
 
 // Define the props
-const props = defineProps({
+defineProps({
   src: {
     type: String,
     required: false,
-    default: 'https://www.youtube.com/embed/ANwf8AE3_d0?si=NQ1SP-KXt_alQQdL',
+    default: '',
   },
 });
-
-// Access the prop (mark it as used)
-const videoSrc = props.src;
 </script>
 
 <template>
-  <div v-if="videoSrc">
+  <div>
     <iframe
-      :src="videoSrc"
+      v-if="src"  
+      :src="src"
       width="600"
       height="400"
       frameborder="0"
-      title="YouTube Video Player"
+      title="External URL Content"
       class="iframe"
     ></iframe>
-  </div>
-  <div v-else>
-    <p>There is no video to display. Enter a URL in the header controls to add a YouTube video.</p>
+    <p v-else>There is no content to display. Enter a URL in the header controls to add a resource.</p>
   </div>
 </template>
 
