@@ -62,7 +62,7 @@ export default {
     async takeScreenshot() {
       if (this.selectionReady) {
         //Capture the element with html2canvas
-        const canvas = await html2canvas(this.$refs.captureContent, {
+        const canvas = await html2canvas(document.body, {
           x: this.selection.startX,
           y: this.selection.startY,
           width: this.selection.width,
