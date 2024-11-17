@@ -3,13 +3,23 @@ import { ref } from 'vue';
 
 const inputUrl = ref('');
 
-const emitUrl = (emit) => {
-  emit('update-url', inputUrl.value);
-};
+// Emit events to the parent
+const emit = defineEmits(['update-url', 'go-button-click']);
+
+// emit URL to the Parent
+// const emitUrl = () => {
+//   emit('update-url', inputUrl.value);
+// };
+
+// emit Go button click event
+const handleGoButtonClick = () => {
+  emit('update-url', inputUrl.value); // The URL needs to be emitted first
+  emit('go-button-click');
+}
 </script>
 
 <template>
-  <form @submit.prevent="emitUrl($emit)">
+  <form @submit.prevent="handleGoButtonClick">
     <label for="video-url"></label>
     <input
       id="video-url"
