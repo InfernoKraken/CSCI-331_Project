@@ -21,7 +21,7 @@ export default {
     async fetchSteamSales() {
       alert("Fetching current Steam sales by using Playwright. Please close this alert and then wait ~30 seconds.");
       try {
-        const response = await fetch('http://localhost:3000/fetch-steam-sales');
+        const response = await fetch('https://your-render-url.onrender.com/fetch-steam-sales');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
